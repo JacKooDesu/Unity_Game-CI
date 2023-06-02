@@ -1,7 +1,9 @@
 name: Build 🥖😭🌭
 
 on:
-  workflow_dispatch: {}
+  schedule:
+    # 分 時 日 月 星期幾
+    - cron: '0 4 * * 1,3,5'
 
 jobs:
   build:
@@ -33,8 +35,9 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
 
-      # 輸出成artifact下載
+      # 輸出成artifact
       - uses: actions/upload-artifact@v2
         with:
           name: Build
           path: build
+          retention-days: 2     # 幾天後會刪除，這邊是三天
