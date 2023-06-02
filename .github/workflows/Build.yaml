@@ -40,4 +40,4 @@ jobs:
         with:
           name: Build
           path: build
-          retention-days: 2     # 幾天後會刪除，這邊是三天
+          retention-days: 2     # 幾天後會刪除，這邊是兩天
