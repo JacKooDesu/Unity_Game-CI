@@ -8,7 +8,7 @@ on:
 # 執行的動作(Job)
 jobs:
   build:  # Job名稱，也可以用name來重新定義👇
-    name: Build Project     # 定義Job名稱
+    name: Test-Job          # 定義Job名稱
     runs-on: ubuntu-latest  # 在哪個平台執行
     steps:  # Job的動作
       - name: Say hello     # 這個動作的名稱
