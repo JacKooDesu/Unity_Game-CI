@@ -12,9 +12,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          lfs: true
+          lfs: true # 使用 LFS
 
-      # Cache可以讓你之後Build更快(可選)
+      # (可選) Cache可以讓你之後Build更快
       - name: Cache
         uses: actions/cache@v2
         with:
@@ -23,7 +23,7 @@ jobs:
           restore-keys: |
             Library-
 
-      # 用Game-CI建置專案
+      # 用Game-CI Builder建置專案
       - name: Build project
         uses: game-ci/unity-builder@v2
         env:
