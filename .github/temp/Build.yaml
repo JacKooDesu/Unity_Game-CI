@@ -1,4 +1,4 @@
-name: 🥖😭🌭 Build
+name: Build 🥖😭🌭
 
 on:
   workflow_dispatch: {}
@@ -8,20 +8,22 @@ jobs:
     name: Build Project
     runs-on: ubuntu-latest
     steps:
-      # Checkout
+      # 查看repo
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
           lfs: true
 
-      # Cache
-      - uses: actions/cache@v2
+      # Cache可以讓你之後Build更快(可選)
+      - name: Cache
+        uses: actions/cache@v2
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
 
+      # 用Game-CI建置專案
       - name: Build project
         uses: game-ci/unity-builder@v2
         env:
@@ -31,7 +33,7 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
 
-      # Output
+      # 輸出成artifact下載
       - uses: actions/upload-artifact@v2
         with:
           name: Build
